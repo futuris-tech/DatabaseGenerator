@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <iostream>
 #include <fstream>
 #include <random>
@@ -6,15 +5,11 @@
 #include "head.h"
 using namespace std;
 
-const int RowNum = 10000;
-const int HalfSalaryProbability = 10000;		//0 - 65536
+const uint16_t HalfSalaryProbability = 15000;		//0 - 65536
+const uint32_t RowNum = 250000;
 
 class randomaizer {
-	struct city {
-		char* name;
-		char* coutry;
-	};
-
+	static char buffer[256];
 	std::default_random_engine dre;
 public:
 	randomaizer() : dre(
@@ -29,7 +24,6 @@ public:
 	}
 
 	const char* get_name() {
-		static char buffer[256];
 		bool m = dre() % 2;
 
 		auto input = (const char*)surname[dre() % surname.size()];
@@ -56,40 +50,36 @@ public:
 
 		return buffer;
 	}
-	uint64_t get_mobile() {
-		unsigned r = dre() % database::mob_operator_range;
-		auto mo_ptr = mob_operator.begin();
-		while (r >= mo_ptr->probability) {
-			r -= mo_ptr->probability;
-			mo_ptr++;
-		}
+	auto get_mobile() {
+		unsigned r = dre() % phone.range;
+		auto o_ptr = phone.begin();
+		for (; r >= o_ptr->second.probability; o_ptr++)
+			r -= o_ptr->second.probability;
 
-		auto mr_begin = mo_ptr->begin;
-		auto mr_end = mo_ptr->end;
-		r = dre() % mr_end[-1].range_end + 1;
-		auto mr_ptr = lower_bound(mr_begin, mr_end, r,
-			[](const mobile_range_s& mr, unsigned value) { return mr.range_end < (int)value; });
-		
-		return mr_ptr->begin + r - mr_ptr[-1].range_end;
+		r = dre() % o_ptr->second.range;
+		auto r_ptr = o_ptr->second.begin();
+		for (; r >= r_ptr->probability; r_ptr++)
+			r -= r_ptr->probability;
+			
+		return 70000000000ull + r_ptr->begin + dre() % r_ptr->range;
 	}
 	unsigned get_salary(unsigned average) {
 		if ((dre() & 0xffff) < HalfSalaryProbability)
 			average /= 2;
 
-		auto add = get_small(average / 2, 2);
-		if (dre() % 2)
-			return average + add;
-		else
-			return average - add;
+		auto add = get_small(average / 4);
+		if (dre() % 2)	return average + add;
+		else			return average - add;
 	}
 };
+char randomaizer::buffer[256];
+
 
 int main() {
-	init_database();
 	ofstream out("result.csv");
 	randomaizer dre;
 	for (int left = RowNum; left;) {
-		int max_empolyee_num = std::min(left, 5000);
+		int max_empolyee_num = std::min(left, 500);
 		int employee_num = 50 + dre.get_small(max_empolyee_num - 49, 2);
 		left -= employee_num;
 		if (left < 50) {
@@ -100,9 +90,9 @@ int main() {
 		auto addr = address[dre() % address.size()];
 		auto write = [&](const job_s& j) {
 			out << dre.get_name()			<< ';'
-				<< "\"+" << dre.get_mobile()<< "\";"
-				<< addr						<< ';'
-				<< (const char*)j.name		<< ';'
+				<< '+' << dre.get_mobile()	<< ';'
+				<< '"' << addr << '"'		<< ';'
+				<< j.name					<< ';'
 				<< dre.get_salary(j.salary)	<< '\n';
 		};
 
@@ -115,7 +105,7 @@ int main() {
 		int i = 0, c = 0;
 		for (auto& j : job2) {
 			c += j.proportion;
-			int i_end = c * employee_num / database::job_range;
+			int i_end = c * employee_num / job2.range;
 			for (; i < i_end; i++)
 				write(j);
 		}

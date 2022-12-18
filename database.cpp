@@ -1,10 +1,7 @@
-#include <cmrc/cmrc.hpp>
-#include <numeric>
-#include "head.h"
-CMRC_DECLARE(csv_res);
+#include <array>
 using namespace std;
 
-extern const array<const char8_t*, 40> m_name = {
+extern const array<const char8_t*, 40> m_name {
 	u8"Александр",
 	u8"Алексей",
 	u8"Анатолий",
@@ -46,7 +43,7 @@ extern const array<const char8_t*, 40> m_name = {
 	u8"Федор",
 	u8"Юрий"
 };
-extern const array<const char8_t*, 44> f_name = {
+extern const array<const char8_t*, 44> f_name {
 	u8"Александра",
 	u8"Алина",
 	u8"Алла",
@@ -92,7 +89,7 @@ extern const array<const char8_t*, 44> f_name = {
 	u8"Юлия",
 	u8"Яна"
 };
-extern const array<const char8_t*, 250> surname = {
+extern const array<const char8_t*, 250> surname {
 	u8"Смирнов",
 	u8"Иванов",
 	u8"Кузнецов",
@@ -344,7 +341,7 @@ extern const array<const char8_t*, 250> surname = {
 	u8"Лыткин",
 	u8"Туров"
 };
-extern const array<const char8_t*, 73> lastname = {
+extern const array<const char8_t*, 73> lastname {
 	u8"Александрович",
 	u8"Алексеевич",
 	u8"Анатольевич",
@@ -419,182 +416,3 @@ extern const array<const char8_t*, 73> lastname = {
 	u8"Яковлевич",
 	u8"Ярославович"
 };
-extern const array<mobile_range_s, 131> mob_range {
-    mobile_range_s(0,0),
-	mobile_range_s(9291000000,200000),
-	mobile_range_s(9210900000,300000),
-	mobile_range_s(9211110000,310000),
-	mobile_range_s(9211800000,410000),
-	mobile_range_s(9213000000,1910000),
-	mobile_range_s(9215500000,2410000),
-	mobile_range_s(9991853000,2445000),
-	mobile_range_s(9991953000,2482000),
-	mobile_range_s(9315770000,2682000),
-	mobile_range_s(9319800000,2882000),
-	mobile_range_s(9319600000,3082000),
-	mobile_range_s(9991220000,3092000),
-	mobile_range_s(9991350000,3102000),
-	mobile_range_s(9991460000,3142000),
-	mobile_range_s(9991503000,3187000),
-	mobile_range_s(9991590000,3217000),
-	mobile_range_s(9991803000,3252000),
-	mobile_range_s(9990603000,3349000),
-	mobile_range_s(9990810000,3359000),
-	mobile_range_s(9990903000,3406000),
-	mobile_range_s(9991010000,3446000),
-	mobile_range_s(9991065000,3471000),
-	mobile_range_s(9991160000,3511000),
-	mobile_range_s(9310000000,3601000),
-	mobile_range_s(9990045000,3656000),
-	mobile_range_s(9990203000,3753000),
-	mobile_range_s(9990303000,3850000),
-	mobile_range_s(9990410000,3990000),
-	mobile_range_s(9990560000,4000000),
-	mobile_range_s(9313200000,4050000),
-	mobile_range_s(9313250000,4150000),
-	mobile_range_s(9313350000,4390000),
-	mobile_range_s(9315760000,4400000),
-	mobile_range_s(9313590000,4650000),
-	mobile_range_s(9315300000,4790000),
-	mobile_range_s(9216300000,5090000),
-	mobile_range_s(9217400000,5690000),
-	mobile_range_s(9218450000,5740000),
-	mobile_range_s(9218550000,7190000),
-	mobile_range_s(9312000000,7690000),
-	mobile_range_s(9312500000,8390000),
-	mobile_range_s(0,0),
-	mobile_range_s(9019700000,100000),
-	mobile_range_s(9013000000,501000),
-	mobile_range_s(9013700000,601000),
-	mobile_range_s(0,0),
-	mobile_range_s(9062400000,400000),
-	mobile_range_s(9095770000,570000),
-	mobile_range_s(9602300000,1170000),
-	mobile_range_s(9626800000,1670000),
-	mobile_range_s(9632410000,1760000),
-	mobile_range_s(9030920000,1840000),
-	mobile_range_s(9681950000,1860000),
-	mobile_range_s(9697000000,2260000),
-	mobile_range_s(9697900000,2360000),
-	mobile_range_s(9657470000,2390000),
-	mobile_range_s(9623430000,2430000),
-	mobile_range_s(9623820000,2460000),
-	mobile_range_s(9674320000,2490000),
-	mobile_range_s(9679670000,2520000),
-	mobile_range_s(9679730000,2590000),
-	mobile_range_s(9623530000,2610000),
-	mobile_range_s(9675900000,2710000),
-	mobile_range_s(9676250000,2720000),
-	mobile_range_s(9675200000,2760000),
-	mobile_range_s(9658130000,2800000),
-	mobile_range_s(9658180000,2820000),
-	mobile_range_s(9675600000,2870000),
-	mobile_range_s(9675700000,2920000),
-	mobile_range_s(9673570000,2950000),
-	mobile_range_s(9616070000,3010000),
-	mobile_range_s(9646100000,3060000),
-	mobile_range_s(9667500000,3160000),
-	mobile_range_s(9675300000,3260000),
-	mobile_range_s(9681800000,3410000),
-	mobile_range_s(9673400000,3460000),
-	mobile_range_s(9673460000,3500000),
-	mobile_range_s(9675100000,3550000),
-	mobile_range_s(9675500000,3590000),
-	mobile_range_s(9643200000,3790000),
-	mobile_range_s(9643400000,3890000),
-	mobile_range_s(9643600000,4290000),
-	mobile_range_s(9650000000,5290000),
-	mobile_range_s(9633000000,5510000),
-	mobile_range_s(9657500000,6010000),
-	mobile_range_s(9052000000,6380000),
-	mobile_range_s(9052500000,6780000),
-	mobile_range_s(9062250000,6830000),
-	mobile_range_s(9618000000,6950000),
-	mobile_range_s(9633220000,7030000),
-	mobile_range_s(9633400000,7130000),
-	mobile_range_s(0,0),
-	mobile_range_s(9043300000,100000),
-	mobile_range_s(9045500000,200000),
-	mobile_range_s(9046000000,400000),
-	mobile_range_s(9046300000,600000),
-	mobile_range_s(9500000000,1000000),
-	mobile_range_s(9516600000,1300000),
-	mobile_range_s(9520950000,1350000),
-	mobile_range_s(9526650000,1400000),
-	mobile_range_s(9006200000,1800000),
-	mobile_range_s(9523800000,2000000),
-	mobile_range_s(9522000000,2300000),
-	mobile_range_s(9533600000,2500000),
-	mobile_range_s(9531400000,2900000),
-	mobile_range_s(9502200000,3000000),
-	mobile_range_s(9522600000,3300000),
-	mobile_range_s(9533400000,3500000),
-	mobile_range_s(9522300000,3700000),
-	mobile_range_s(9523500000,4000000),
-	mobile_range_s(9045100000,4100000),
-	mobile_range_s(9500400000,4200000),
-	mobile_range_s(9516400000,4400000),
-	mobile_range_s(0,0),
-	mobile_range_s(9110000000,400000),
-	mobile_range_s(9110800000,2600000),
-	mobile_range_s(9117000000,3600000),
-	mobile_range_s(9118100000,4000000),
-	mobile_range_s(9119000000,5000000),
-	mobile_range_s(9817000000,5500000),
-	mobile_range_s(9819000000,6000000),
-	mobile_range_s(9811000000,7000000),
-	mobile_range_s(9819500000,7500000),
-	mobile_range_s(9812000000,7800000),
-	mobile_range_s(9817500000,8300000),
-	mobile_range_s(9818000000,8500000),
-	mobile_range_s(9818200000,8800000),
-	mobile_range_s(9818500000,8950000),
-	mobile_range_s(9816800000,9150000),
-	mobile_range_s(9818700000,9450000)
-};
-extern const array<operator_s, 5> mob_operator {
-    operator_s(&mob_range[1],	&mob_range[42],	8390000,	8390),
-    operator_s(&mob_range[43],	&mob_range[46],	601000,		601),
-    operator_s(&mob_range[47],	&mob_range[92],	7130000,	7130),
-    operator_s(&mob_range[93],	&mob_range[114],4400000,	4400),
-    operator_s(&mob_range[115],	&mob_range[131],9450000,	9450)
-};
-extern const array<job1s, 1> job1 = {
-    job1s(u8"Генеральный директор",	80540,	1)
-};
-extern const array<job2s, 10> job2 = {
-    job2s(u8"Начальник",			83947,	10),
-    job2s(u8"Охранник",				37244 ,	6),
-    job2s(u8"Уборщик",				27497,	6),
-    job2s(u8"Комендант",			39687,	6),
-    job2s(u8"Бухгалтер",			55572,	5),
-    job2s(u8"Менеджер",				60701,	25),
-    job2s(u8"Программист",			109790,	12),
-    job2s(u8"Инженер",				69067,	12),
-    job2s(u8"Медик",				64401,	12),
-    job2s(u8"Секретарь",			40282,	5)
-};
-array<const char*, 25221> address;
-
-namespace database {
-	const unsigned mob_operator_range = accumulate(
-		&mob_operator[0],
-		&mob_operator[mob_operator.size()],
-		0u,
-		[](unsigned sum, const operator_s& mo) { return sum + mo.probability; });
-	const unsigned job_range = accumulate(
-		&job2[0],
-		&job2[job2.size()],
-		0u,
-		[](unsigned sum, const job2s& j) { return sum + j.proportion; });
-}
-
-void init_database() {
-	auto fs = cmrc::csv_res::get_filesystem();
-
-	auto ptr = fs.open("address.csv").begin();
-    for (auto& dst : address) {
-        dst = ptr;
-        ptr = strchr(ptr, 0) + 1;
-    }
-}
